@@ -40,7 +40,7 @@ FFmpeg는 디지털 음성 스트림과 영상 스트림에 대해 수많은 종
 다음 팟 플레이어, 곰플레이어, MXPlayer 등 다수의 유명한 코덱 내장형 동영상 플레이어들이 FFmpeg의 libavcodec을 기반으로 하고 있다.
 FFmpeg은 리눅스 기반으로 개발되었지만, 애플, 윈도, 아미가OS 등 대부분의 운영 체제에서 컴파일이 가능하다. 그러한 이유로 다양한 운영체제에서 사용이 가능하다.
 
-![FFserver](/img/ffmpeg_working_principle.png)
+![FFserver](/img/ffmpeg_working_principle.png)<br/>
 -그림 1. FFServer의 내부 작동 원리
 Fig. 1. Internal working principle of FFServer
 
@@ -54,7 +54,7 @@ FFServer는 HTTP 서버 역할을 하고 요청을 수락 시 FFmpeg에게 스�
 
 1. 시스템구성
 
-![Structure](/img/structure.png)
+![Structure](/img/structure.png)<br/>
 -그림 2. 전체 시스템구성
 Fig. 2. System View
 
@@ -64,7 +64,7 @@ Raspberry PI를 Start 하게 되면 Connecting Software Module이 FFServer와 FF
 
 전체적인 알고리즘은 다음과 같다.
 
-![Structure](/img/algorithm.png)
+![Structure](/img/algorithm.png)<br/>
 -그림 3. 안드로이드 앱과 라즈베리 파이 사이의 통신 알고리즘
 Fig. 3. Data communications algorism between Android App and Raspberry PI
 
@@ -73,7 +73,7 @@ Fig. 3. Data communications algorism between Android App and Raspberry PI
 안드로이드 앱은 총 3개의 스레드로 구성되었으며 각각 시스템 통합 제어 프로그램과의 통신, 앱의 surface view에 드론의 카메라 영상을 출력, 비디오 데이터를 방송 송출 시스템으로 전송하는 기능을 담당한다. 안드로이드 앱에는 두개의 큐를 구현했는데 한 가지는 화면에 출력하기 위한 데이터를 담을 큐이고 다른 하나는 방송 송출을 위해 비디오 데이터를 전송 하는 용도이다. 안드로이드 앱이 실행되면 MainActivity에서 main thread가 동작하기 시작한다. main thread는 드론으로부터 DJI SDK를 이용해 받은 H.264포맷의 비디오 데이터를 실시간으로 화면 에 출력한다. Message thread와 Streaming thread는 방송 송출이 시작될 때 동작한다. Message thread는 라즈베리파이의 시스템 통합제어 프로그램과 TCP통신 방식의 handshake과정을 거쳐 비디오 데이터를 전송할 URL을 받아온다. Streaming thread는 전달받은 URL로 UDP 방식으로 비디오 데이터 전송을 시작한다.
 
 
-![Structure](/img/app_structure.png)
+![Structure](/img/app_structure.png)<br/>
 -그림 4. 드론으로 부터 비디오 스트림을 받는 안드로이드 앱의 구조
 Fig. 4. Structure of Android app that receives video stream from drones
 
@@ -90,7 +90,7 @@ FFmpeg가 인코딩 과정을 거친 데이터를 .ffm형태의 feed로 FFServer
 클라이언트가 Apache 웹서버에 올라가 있는 웹 페이지에 접속하게 되면 웹 페이지 내의 Video태그 url을 통해 FFServer에 접속한다.
 FFServer는 클라이언트의 접속을 받으면 HTTP프로토콜을 이용하여 WebM형태로 스트리밍 데이터를 보내준다.
 
-![Structure](/img/ffmpeg_working_principle.png)
+![Structure](/img/ffmpeg_working_principle.png)<br/>
 -그림 5. FFmpeg의 내부 작동 원리
 Fig. 5. Internal working principle of FFmpeg
 
