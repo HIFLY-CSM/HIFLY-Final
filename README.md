@@ -2,7 +2,7 @@
 
 ## 구성원
 
-* 김준희 : Connecting Software Module 및 Web Server 구현
+* 김준희 : Connecting Software Module 및 Web Server 구현, Documentation
 * 김형민 : Raspberry PI 환경 구축 및 Android Application 구현
 * 김지나 : Android UI 및 Android Application 구현
 * 최용석 : FFServer 환경 구축 및 Connecting Software Module 구현
@@ -16,6 +16,8 @@
 * 연구 배경
 * 시스템 설계
 * 구현
+* 작품 환경 설정
+* 작품 사용법
 * 참고
 
 <br/><br/>
@@ -38,7 +40,7 @@ FFmpeg는 디지털 음성 스트림과 영상 스트림에 대해 수많은 종
 다음 팟 플레이어, 곰플레이어, MXPlayer 등 다수의 유명한 코덱 내장형 동영상 플레이어들이 FFmpeg의 libavcodec을 기반으로 하고 있다.
 FFmpeg은 리눅스 기반으로 개발되었지만, 애플, 윈도, 아미가OS 등 대부분의 운영 체제에서 컴파일이 가능하다. 그러한 이유로 다양한 운영체제에서 사용이 가능하다.
 
-
+![FFserver](/img/ffmpeg_working_principle.png)
 -그림 1. FFServer의 내부 작동 원리
 Fig. 1. Internal working principle of FFServer
 
@@ -46,11 +48,13 @@ FFServer는 2016 년 7 월 10 일에 사람들이 이해하기 어려운 혼란�
 FFServer는 다양한 비디오, 오디오 스트림 및 인코딩 옵션을 지정할 수 있으며 FFmpeg와 연결을 통한 라이브 피드나 파일을 스트리밍 할 수 있다.
 FFServer는 HTTP 서버 역할을 하고 요청을 수락 시 FFmpeg에게 스트림을 얻은 후 RTSP 클라이언트 또는 HTTP 클라이언트가 스트림 미디어 컨텐츠로 요청을 제공하는 역할을 한다.
 
+
 <br/><br/>
 ## 시스템 설계
 
 1. 시스템구성
 
+![Structure](/img/structure.png)
 -그림 2. 전체 시스템구성
 Fig. 2. System View
 
@@ -58,16 +62,9 @@ Fig. 2. System View
 안드로이드 앱은 DJI SDK를 이용해 드론 컨트롤러에서 실시간으로 H.264포맷인 비디오 데이터를 받아온다. H.264 포맷의 약 4000byte로 받아온 데이터를 30kbyte로 Framming 한 뒤 2가지 블로킹 큐에 담는다. 그 중 한 가지는 화면에 출력하기 위한 데이터를 담는 큐이고 다른 하나는  방송 송출을 위한 비디오 데이터를 전송하기 위한 큐이다. 화면에 출력하기 위한 데이터는 안드로이드 Media Codec을 이용해 화면에 스트리밍 하게 되고 방송 송출을 위한 비디오 데이터는 웹 페이지에 스트리밍 하기 위해 라즈베리 파이의 FFmpeg Video Converter에서 WebM으로 Converting 과정을 거친 후 FFServer에 feed로 준다. 그 후 FFServer에서 아파치 웹 서버에 올린 웹 페이지에 접속해 실시간으로 스트리밍 되는 영상을 받아온다.
 Raspberry PI를 Start 하게 되면 Connecting Software Module이 FFServer와 FFmpeg Video Converter를 실행시킨다.
 
-
-
-
-
-
 전체적인 알고리즘은 다음과 같다.
 
-
-
-
+![Structure](/img/algorithm.png)
 -그림 3. 안드로이드 앱과 라즈베리 파이 사이의 통신 알고리즘
 Fig. 3. Data communications algorism between Android App and Raspberry PI
 
@@ -76,6 +73,7 @@ Fig. 3. Data communications algorism between Android App and Raspberry PI
 안드로이드 앱은 총 3개의 스레드로 구성되었으며 각각 시스템 통합 제어 프로그램과의 통신, 앱의 surface view에 드론의 카메라 영상을 출력, 비디오 데이터를 방송 송출 시스템으로 전송하는 기능을 담당한다. 안드로이드 앱에는 두개의 큐를 구현했는데 한 가지는 화면에 출력하기 위한 데이터를 담을 큐이고 다른 하나는 방송 송출을 위해 비디오 데이터를 전송 하는 용도이다. 안드로이드 앱이 실행되면 MainActivity에서 main thread가 동작하기 시작한다. main thread는 드론으로부터 DJI SDK를 이용해 받은 H.264포맷의 비디오 데이터를 실시간으로 화면 에 출력한다. Message thread와 Streaming thread는 방송 송출이 시작될 때 동작한다. Message thread는 라즈베리파이의 시스템 통합제어 프로그램과 TCP통신 방식의 handshake과정을 거쳐 비디오 데이터를 전송할 URL을 받아온다. Streaming thread는 전달받은 URL로 UDP 방식으로 비디오 데이터 전송을 시작한다.
 
 
+![Structure](/img/app_structure.png)
 -그림 4. 드론으로 부터 비디오 스트림을 받는 안드로이드 앱의 구조
 Fig. 4. Structure of Android app that receives video stream from drones
 
@@ -92,6 +90,7 @@ FFmpeg가 인코딩 과정을 거친 데이터를 .ffm형태의 feed로 FFServer
 클라이언트가 Apache 웹서버에 올라가 있는 웹 페이지에 접속하게 되면 웹 페이지 내의 Video태그 url을 통해 FFServer에 접속한다.
 FFServer는 클라이언트의 접속을 받으면 HTTP프로토콜을 이용하여 WebM형태로 스트리밍 데이터를 보내준다.
 
+![Structure](/img/ffmpeg_working_principle.png)
 -그림 5. FFmpeg의 내부 작동 원리
 Fig. 5. Internal working principle of FFmpeg
 
@@ -101,54 +100,36 @@ Fig. 5. Internal working principle of FFmpeg
 
 1. 시스템 구현
 
-
-
+![Structure](/img/drone.png)
+![Structure](/img/controler.png)
 -그림 6. Phantom 4 pro와 조종기
 Fig. 6. Phantom 4 pro and controller
 
-
 그림 6은 DJI사의 Phantom 4 pro와 조종기다. 기체에 탑제된 카메라는 1인치 20메가픽셀 CMOS센서를 탑제하고, DJI사에서 직접 제작한 7군8매의 렌즈를 갖추었다. 영상 시스템은 H.264 4K/60f와 H.265 4K/30fps 동영상을 100Mbps속도로 촬영한다.
 
-
-
-
-
-
+![Structure](/img/application1.png)
+![Structure](/img/application2.png)
 -그림 7. 안드로이드 앱
 Fig. 7. Android Application
 
-
-
-
-
-
-
 그림 7은 DJI SDK를 활용하여 제작한 안드로이드 어플이다. DJI사에서는 개발자들이 활용하여 개발할 수 있는 안드로이드SDK를 제공한다. DJI SDK는 자바문법으로 구성되어 있고 Native 메소드들이 동작하여 디바이스들을 제어한다. SDK는 FC(Flight Control),Mission Control, 카메라 등 안드로이드에서 드론을 제어할 수 있는 여러 기능을 제공하는데 HIFLY 프로젝트는 카메라를 제어하는 메소드들을 활용했다.
 
-
-
+![Structure](/img/hardware.png)
 -그림 8. 하드웨어 구성
 Fig. 8. Hardware Configuration
-
-
-
-
 
 그림 8의 라즈베리파이는 라즈베리파이 모델3B로 데비안 기반의 라즈비안 리눅스가 설치되었다. 소프트웨어는 비디오 데이터를 변환하는 FFmpeg, 변환된 데이터를 송출하는 FFserver, 전체 시스템을 제어하는 시스템 통합제어 프로그램, 시청자들에게 제공되는 아파치 웹서버가 탑제되었다.
 라즈베리파이와 전원을 공급하는 배터리, 네트워크를 구성할 AP를 담기 위해 3D프린터를 이용하여 직접 맞춤 케이스를 제작했다. 아래 그림()에서 보이는 것처럼 케이스에는 라즈베리파이의 온도를 조절하기 위한 환풍구와, 턱을 만들어 각 하드웨어들을 고정 시킬 수 있도록 모델링 했다.
 
-
-
+![Structure](/img/streamming_screen.png)
 -그림 9. 안드로이드 스트리밍 화면
-Fig. 9. Android Streamming Screen
-
-
+Fig. 9. Android Streamming
 
 그림 9는 드론 컨트롤러에 연결되는 안드로이드 앱이다. 컨트롤러와 연결이 시작되면 드론의 카메라가 촬영한 비디오 데이터를 화면에 출력한다. 사용자가 좌측의 스트리밍 시작(“Start Streaming”)버튼을 누르면 앱은 라즈베리 파이의 방송 송출시스템으로 받아온 비디오 데이터를 전송하기 시작한다.
 
 
 <br/><br/>
-## 작품 사용 법
+## 작품 환경 설정
 
 1. Raspberry pi 3 기본 사양
 
@@ -172,9 +153,9 @@ BLE(저전력 블루투스) 보드 내장<br/>
 
 3. FFmpeg Config 설정
 
-{% highlight bash %}
+<pre>
 ffmpeg –i udp://@IP:PORT –vcodec libvpx yuv420p –threads 8 –cpu-used 5 –deadline realtime –framerate 15 –preset ultrafast –an http://FFserverIP:PORT/feed1.ffm
-{% endhighlight %}
+</pre>
 
 
 4. Raspberry pi 3 수정 Config 설정
@@ -187,6 +168,13 @@ CPU 오버클럭을 설정한다.<br/>
 ```sdram_freq=450```  MHz단위의 sdram 주파수<br/>
 ```force_turbo=1```    ARM 코어가 사용 중이 아닌 경우에도 터보 모드 주파수를 강제<br/>
 ```over_voltage=2```   CPU GPU Core 전압 조정<br/>
+
+
+<br/><br/>
+## 작품 사용법
+
+
+
 
 <br/><br/>
 ## 참고
