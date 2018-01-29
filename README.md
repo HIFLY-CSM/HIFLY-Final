@@ -51,7 +51,7 @@ FFServer는 HTTP 서버 역할을 하고 요청을 수락 시 FFmpeg에게 스�
 
 
 <br/><br/>
-## <span id="two">시스템 설계</span>
+## <a id="two">시스템 설계</a>
 
 1. 시스템구성
 
@@ -97,7 +97,7 @@ Fig. 5. Internal working principle of FFmpeg
 
 
 <br/><br/>
-## <span id="three">구현</span>
+## <a id="three">구현</a>
 
 1. 시스템 구현
 
@@ -130,7 +130,7 @@ Fig. 9. Android Streamming
 
 
 <br/><br/>
-## <span id="four">작품 환경 설정</span>
+## <a id="four">작품 환경 설정</a>
 
 1. Raspberry pi 3 기본 사양
 
@@ -172,13 +172,13 @@ CPU 오버클럭을 설정한다.<br/>
 
 
 <br/><br/>
-## <span id="five">작품 사용법</span>
+## <a id="five">작품 사용법</a>
 
 
 
 
 <br/><br/>
-## <span id="six">참고</span>
+## <a id="six">참고</a>
 
 * <https://www.ffmpeg.org/>
 * <https://en.wikipedia.org/wiki/FFmpeg>
