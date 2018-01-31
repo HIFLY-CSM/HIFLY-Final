@@ -142,7 +142,7 @@ BLE(저전력 블루투스) 보드 내장<br/>
 
 2. FFServer Config 설정
 
-> HIFLY 프로젝트에 사용한 config 파일은 이 repository에 올라가있다. 총 3가지 Format인 webm, flv, ogg의 형태가 있으나 HIFLY 프로젝트에서는 크롬, 인터넷 익스플로러 모두에게 스트림 하기위해 Converting 속도는 느리다 하더라도 webm을 사용했다.
+> HIFLY 프로젝트에 사용한 Config 파일은 이 Repository에 올라가있다. 총 3가지 Format인 webm, flv, ogg의 형태가 있으나 HIFLY 프로젝트에서는 크롬, 인터넷 익스플로러 등과 같은 여러 브라우저와 N-스크린을 지원하여 스트리밍 하기 위해 webm을 사용했다.
 
 ```Format webm```<br/>
 ```NoAudio```<br/>
@@ -178,6 +178,25 @@ CPU 오버클럭을 설정한다.<br/>
 
 <br/><br/>
 ## <a id="five">작품 사용법</a>
+
+> HIFLY 프로젝트는 PC를 이용한 버전과 Raspberry PI를 이용한 총 2가지 버전이 있다. <br/>
+
+
+### PC
+
+* [HIFLY-JAVA-SERVER]()
+
+* [HIFLY-Android-Application]()
+
+* [HIFLY-Web-View-Broadcasting]()
+
+### Raspberry PI 3
+
+* [Codes]()
+
+* [HIFLY-Android-Application]()
+
+* [HIFLY-Web-View-One]()
 
 
 
