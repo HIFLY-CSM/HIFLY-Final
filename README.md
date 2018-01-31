@@ -114,14 +114,14 @@ Fig. 7. Android Application
 
 그림 7은 DJI SDK를 활용하여 제작한 안드로이드 어플이다. DJI사에서는 개발자들이 활용하여 개발할 수 있는 안드로이드SDK를 제공한다. DJI SDK는 자바문법으로 구성되어 있고 Native 메소드들이 동작하여 디바이스들을 제어한다. SDK는 FC(Flight Control), Mission Control, 카메라 등 안드로이드에서 드론을 제어할 수 있는 여러 기능을 제공하는데 HIFLY 프로젝트는 카메라를 제어하는 메소드들을 활용했다.
 
-![Structure](/img/hardware.png)
+![Structure](/img/hardware.png)<br/>
 -그림 8. 하드웨어 구성<br/>
 Fig. 8. Hardware Configuration
 
 그림 8의 라즈베리파이는 라즈베리파이 모델3B로 데비안 기반의 라즈비안 리눅스가 설치되었다. 소프트웨어는 비디오 데이터를 변환하는 FFmpeg, 변환된 데이터를 송출하는 FFserver, 전체 시스템을 제어하는 시스템 통합제어 프로그램, 시청자들에게 제공되는 아파치 웹서버가 탑제되었다.
 라즈베리파이와 전원을 공급하는 배터리, 네트워크를 구성할 AP를 담기 위해 3D프린터를 이용하여 직접 맞춤 케이스를 제작했다. 아래 그림()에서 보이는 것처럼 케이스에는 라즈베리파이의 온도를 조절하기 위한 환풍구와, 턱을 만들어 각 하드웨어들을 고정 시킬 수 있도록 모델링 했다.
 
-![Structure](/img/streamming_screen.png)
+![Structure](/img/streamming_screen.png)<br/>
 -그림 9. 안드로이드 스트리밍 화면<br/>
 Fig. 9. Android Streamming
 
@@ -164,7 +164,7 @@ ffmpeg –i udp://@IP:PORT –vcodec libvpx yuv420p –threads 8 –cpu-used 5 �
 
 4. Raspberry pi 3 수정 Config 설정
 
-> 오버클럭을 통해 동영상 스트리밍에 적합하도록 라즈베리파이의 성능을 향상 시켰습니다.
+> 오버클럭을 통해 동영상 스트리밍에 적합하도록 라즈베리파이의 성능을 향상시켰다.
 
 ```temp_limit=85```  Throttling의 온도를 85도로 지정한다.<br/>
 CPU 오버클럭을 설정한다.<br/>
