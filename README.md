@@ -15,7 +15,7 @@
 * [연구 배경](#one)
 * [시스템 설계](#two)
 * [구현](#three)
-* [작품 환경 설정](#four)
+* [작품 환경 설명](#four)
 * [작품 사용법](#five)
 * [참고](#six)
 
@@ -129,7 +129,7 @@ Fig. 9. Android Streamming
 
 
 <br/><br/>
-## <a id="four">작품 환경 설정</a>
+## <a id="four">작품 환경 설명</a>
 
 1. Raspberry pi 3 기본 사양
 
@@ -181,7 +181,7 @@ CPU 오버클럭을 설정한다.<br/>
 
 > HIFLY 프로젝트는 PC를 이용한 버전과 Raspberry PI를 이용한 총 2가지 버전이 있다. <br/>
 
-### 환경설정
+### 개발 환경 구성
 
 * [FFServer 설치]()
 
