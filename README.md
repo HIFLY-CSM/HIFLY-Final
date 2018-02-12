@@ -197,7 +197,7 @@ CPU 오버클럭을 설정한다.<br/>
 
 ### Raspberry PI 3
 
-* [Codes](https://github.com/HIFLY-CSM/HIFLY-Final/tree/master/codes)
+* [Codes](https://github.com/HIFLY-CSM/HIFLY-Final/tree/master/codes)<br/> [HIFLY-JAVA-SERVER](https://github.com/HIFLY-CSM/HIFLY-Java-Server)의 설명과 같다. 단지 컴파일을 Codes를 한 폴더에 모아 javac를 이용해 컴파일한다.
 
 * [HIFLY-Android-Application](https://github.com/HIFLY-CSM/HIFLY-Android-Application)
 
