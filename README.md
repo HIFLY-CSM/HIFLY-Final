@@ -183,9 +183,9 @@ CPU 오버클럭을 설정한다.<br/>
 
 ### 개발 환경 구성
 
-* [FFServer 설치](https://wnsgml972.github.io/wnsgml972.github.io/ffmpeg/ffmpeg_ffserver-config.html)
+* [FFServer 설치](https://wnsgml972.github.io/ffmpeg/ffmpeg_ffserver_config.html)
 
-* [FFServer, FFmpeg 사용법](https://wnsgml972.github.io/wnsgml972.github.io/ffmpeg/ffmpeg_ffserver-streamming.html)
+* [FFServer, FFmpeg 사용법](https://wnsgml972.github.io/ffmpeg/ffmpeg_ffserver_streamming.html)
 
 ### PC
 
@@ -202,10 +202,6 @@ CPU 오버클럭을 설정한다.<br/>
 * [HIFLY-Android-Application](https://github.com/HIFLY-CSM/HIFLY-Android-Application)
 
 * [HIFLY-Web-View-One](https://github.com/HIFLY-CSM/HIFLY-Web-View-One)
-
-### 후기
-
-* [회고록](https://wnsgml972.github.io/wnsgml972.github.io/retrospective/Retrospective-2017.html)
 
 <br/><br/>
 ## <a id="six">참고</a>
