@@ -1,15 +1,15 @@
 # 라이브 드론 비디오 스트리밍 솔루션 구현
 
-## 구성원
+## Team Info
 
 * 김준희 : Connecting Software Module 및 Streaming Page 구현 및 Documentation 총 정리
 * 김형민 : Raspberry PI 환경 구축 및 Android Application 구현
 * 김지나 : Android UI 및 Android Application 구현
 * 최용석 : FFServer 환경 구축 및 Connecting Software Module 구현
 
-## 동영상
+## Demo
 
-* [Youtube](https://www.youtube.com/watch?v=55R1oghmro4&feature=youtu.be)
+[![Video Label](http://img.youtube.com/vi/55R1oghmro4/0.jpg)](https://www.youtube.com/watch?v=55R1oghmro4&feature=youtu.be)
 
 ## HIFLY
 * [연구 배경](#one)
