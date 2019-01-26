@@ -177,7 +177,7 @@ CPU 오버클럭을 설정한다.<br/>
 
 
 <br/><br/>
-## <a id="five">작품 사용법</a>
+## <a id="five">프로젝트 사용</a>
 
 > HIFLY 프로젝트는 PC를 이용한 버전과 Raspberry PI를 이용한 총 2가지 버전이 있다. <br/>
 
